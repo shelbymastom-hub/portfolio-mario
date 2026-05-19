@@ -1,0 +1,213 @@
+html { scroll-behavior: auto; } 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: #050505; color: #e0e0e0; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+
+/* ========================================================
+   1. NAVBAR
+   ======================================================== */
+.navbar { position: fixed; top: 0; right: 0; width: 100%; z-index: 100; display: flex; justify-content: center; padding: 15px 20px; background: rgba(0, 0, 0, 0.6); border-bottom: 1px solid rgba(255,255,255,0.02); transition: background 0.3s ease; }
+.navbar ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+.navbar a { text-decoration: none; color: #a0a0a0; font-size: clamp(0.7rem, 2vw, 0.85rem); letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s ease; }
+.navbar a:hover { color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); }
+
+/* ========================================================
+   2. HERO SECTION 
+   ======================================================== */
+.hero { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; background-color: #000; }
+.hero-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; will-change: transform, opacity; } 
+.bg-layer { z-index: 1; }
+.bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; pointer-events: none; will-change: transform; }
+.mid-layer { background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 40px 40px; z-index: 2; }
+.scanlines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.3)); background-size: 100% 4px; pointer-events: none; z-index: 3; }
+
+.text-layer { z-index: 4; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 20px; text-align: center; }
+.hero-title { font-family: 'Bodoni Moda', serif; font-size: clamp(2.5rem, 8vw, 6.5rem); font-weight: 700; color: #e0e0e0; text-transform: uppercase; display: inline-flex; flex-wrap: wrap; justify-content: center; perspective: 1000px; gap: clamp(1px, 0.5vw, 6px); }
+.hero-title span { display: inline-block; transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease; transform-origin: center center; cursor: default; will-change: transform; }
+.hero-title span:hover { transform: scale(1.35) translateY(-5px); color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+.hero-subtitle { margin-top: clamp(10px, 2vw, 20px); font-size: clamp(0.7rem, 1.5vw, 1rem); letter-spacing: clamp(4px, 1.5vw, 14px); color: #888; text-transform: uppercase; }
+
+.scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0.6; will-change: opacity, transform; }
+.scroll-indicator span { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+.scroll-indicator .line { width: 1px; height: 40px; background-color: #fff; animation: bounce 2s infinite ease-in-out; }
+@keyframes bounce { 0%, 100% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 50.1% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* ========================================================
+   3. BIOGRAFI SECTION
+   ======================================================== */
+.biografi-section { padding: clamp(80px, 10vw, 150px) 20px; background-color: #050505; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.bio-container { width: 100%; max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(60px, 8vw, 100px); }
+
+.bio-left { display: flex; flex-direction: column; gap: 30px; }
+.bio-image-wrapper { width: 100%; max-width: clamp(250px, 70vw, 400px); aspect-ratio: 3/4; overflow: hidden; border-radius: 4px; will-change: transform; }
+.bio-image-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease; }
+.bio-image-wrapper:hover img { transform: scale(1.05); filter: grayscale(20%); }
+
+.bio-identity h2 { font-family: 'Bodoni Moda', serif; font-size: clamp(3rem, 6vw, 4.5rem); text-transform: uppercase; color: #fff; line-height: 1; letter-spacing: 2px; }
+.bio-identity .role { font-size: clamp(0.85rem, 1.5vw, 1rem); color: #888; letter-spacing: 3px; text-transform: uppercase; margin-top: 15px; margin-bottom: 30px; }
+
+.bio-contact { display: flex; flex-direction: column; gap: 15px; }
+.bio-contact a { color: #a0a0a0; text-decoration: none; font-size: clamp(0.8rem, 1.5vw, 0.9rem); display: flex; align-items: center; gap: 12px; transition: color 0.3s ease; }
+.bio-contact a i { width: 20px; text-align: center; color: #fff; }
+.bio-contact a:hover { color: #fff; }
+
+.bio-right { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 100px); }
+.bio-block { display: flex; flex-direction: column; gap: 30px; will-change: transform, opacity; }
+.bio-heading { font-size: clamp(0.75rem, 1.5vw, 0.85rem); letter-spacing: 4px; text-transform: uppercase; color: #666; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.bio-text { font-size: clamp(1rem, 2vw, 1.5rem); line-height: 1.6; color: #ccc; font-weight: 300; }
+
+.resume-list { display: flex; flex-direction: column; }
+.resume-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; cursor: default; }
+.resume-row:hover { padding-left: 20px; padding-right: 20px; background-color: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.2); }
+.row-left h4 { font-size: clamp(1rem, 1.5vw, 1.3rem); color: #fff; font-weight: 400; margin-bottom: 5px; }
+.row-left span { font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: #888; }
+.row-right { font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+.skills-tags { display: flex; flex-wrap: wrap; gap: 12px; }
+.tag { padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; font-size: clamp(0.75rem, 1.2vw, 0.85rem); color: #ccc; transition: all 0.3s ease; }
+.tag:hover { background-color: #fff; color: #000; border-color: #fff; }
+
+/* ========================================================
+   4. GALLERY SECTION
+   ======================================================== */
+.gallery-section { background-color: #0a0a0a; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: clamp(60px, 8vw, 120px) 0; overflow: hidden; border-top: 1px solid #1a1a1a; }
+.swiper { width: 100%; padding: clamp(40px, 5vw, 80px) 0; }
+.swiper-slide { width: clamp(280px, 45vw, 650px); aspect-ratio: 4/3; opacity: 0.3; transition: opacity 0.4s ease; border-radius: 12px; will-change: transform, opacity; }
+.swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.swiper-slide-active { opacity: 1; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); }
+
+.stats-headline-container { padding: 0 20px; margin-bottom: 30px; will-change: transform, opacity; }
+.stats-headline { font-size: clamp(0.9rem, 2vw, 1.1rem); color: #ccc; text-align: center; letter-spacing: 1px; }
+.stats-container { width: 100%; max-width: 1400px; margin-top: 30px; padding: 0 30px; will-change: transform, opacity; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: clamp(30px, 4vw, 50px); text-align: center; } 
+.stat-item { padding: 20px; border-radius: 12px; transition: transform 0.3s; }
+.stat-item:hover { transform: translateY(-5px); background: rgba(255,255,255,0.02); }
+.stat-number { font-size: clamp(3.5rem, 8vw, 5rem); color: #fff; margin-bottom: 8px; font-weight: 500; letter-spacing: -2px; }
+.stat-label { font-size: clamp(0.75rem, 1.5vw, 0.85rem); color: #888; text-transform: uppercase; letter-spacing: 2px; }
+
+/* ========================================================
+   5. TEMPLATE DESIGN SECTION (TAMBAHAN BARU)
+   ======================================================== */
+.template-section {
+    background-color: #050505;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(80px, 10vw, 150px) 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.template-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.template-content {
+    text-align: center;
+    max-width: 900px;
+    will-change: transform, opacity;
+}
+
+.template-title {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+}
+
+.template-text p {
+    font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+    line-height: 1.8;
+    color: #aaa;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+/* Area Tombol Interaktif */
+.interactive-button-container {
+    position: relative;
+    height: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    perspective: 1500px;
+}
+
+.falling-text-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 50px; /* Ruang biar gampang ditarik */
+}
+
+/* Style masing-masing huruf */
+.drag-letter {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: grab;
+    user-select: none;
+    position: relative;
+    /* Efek huruf menumpuk: */
+    margin-left: clamp(-15px, -2vw, -30px); 
+    text-shadow: 5px 10px 20px rgba(0,0,0,0.9);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.drag-letter:first-child {
+    margin-left: 0;
+}
+
+.drag-letter:hover {
+    color: #f0f0f0;
+    text-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+.drag-letter:active {
+    cursor: grabbing;
+    color: #888;
+}
+
+.drag-hint {
+    margin-top: 30px;
+    font-size: 0.75rem;
+    color: #666;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+
+/* ========================================================
+   6. MEDIA QUERIES 
+   ======================================================== */
+@media (min-width: 768px) {
+    .navbar { padding: 25px 50px; justify-content: flex-end; background: transparent; border: none; backdrop-filter: none; }
+    .navbar ul { gap: 30px; }
+    .navbar.scrolled { background: rgba(5, 5, 5, 0.95); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .resume-row { flex-wrap: nowrap; align-items: center; }
+}
+
+@media (min-width: 1024px) {
+    .bio-container { flex-direction: row; display: grid; grid-template-columns: 35% 1fr; gap: 80px; }
+    .bio-left { position: sticky; top: 150px; height: fit-content; }
+}
