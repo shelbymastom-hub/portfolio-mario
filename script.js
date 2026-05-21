@@ -15,7 +15,6 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0);
 
-
 // ========================================================
 // 1. HERO FONT SPLITTER & ANIMASI PIN
 // ========================================================
@@ -48,7 +47,6 @@ heroTimeline.to(".mid-layer", { scale: 1.2, rotationZ: 3, opacity: 0, ease: "non
 heroTimeline.to(".text-layer", { yPercent: -120, opacity: 0, ease: "none", force3D: true }, 0);
 heroTimeline.to(".scroll-indicator", { opacity: 0, y: 50, ease: "none", force3D: true }, 0);
 
-
 // ========================================================
 // 2. ANIMASI REVEAL BIOGRAFI
 // ========================================================
@@ -61,7 +59,6 @@ gsap.from(".bio-block.reveal-bottom", {
     y: 40, opacity: 0, duration: 1, stagger: 0.15, ease: "power2.out", force3D: true,
     scrollTrigger: { trigger: "#biografi", start: "top 60%", toggleActions: "play none none reverse" }
 });
-
 
 // ========================================================
 // 3. SWIPER GALLERY
@@ -84,7 +81,6 @@ gsap.from(".stats-headline-container, .stats-container", {
     y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out", force3D: true,
     scrollTrigger: { trigger: ".gallery-section", start: "top 70%", toggleActions: "play none none reverse" }
 });
-
 
 // ========================================================
 // 4. NAVBAR & MENU CLICK
@@ -113,7 +109,6 @@ document.querySelectorAll('.navbar a').forEach(anchor => {
         }
     });
 });
-
 
 // ========================================================
 // 5. TEMPLATE SECTION: HURUF JATUH & DRAGGABLE INTERACTIVE
@@ -169,5 +164,54 @@ if (dragWrapper) {
             // Pas dilepas, ukurannya balik normal
             gsap.to(this.target, { scale: 1, zIndex: 100, duration: 0.2 });
         }
+    });
+}
+
+// ========================================================
+// CODE PART 2: 3D ROOM PROJECTION JS
+// ========================================================
+
+// 1. Tangkap semua layer 3D yang ada
+const roomLayers = gsap.utils.toArray('.room-layer');
+
+if (roomLayers.length > 0) {
+    // 2. Set posisi awal Z (kedalaman) untuk setiap layer
+    // Layer 1 paling depan (z: -1000), layer berikutnya makin jauh ke dalam
+    roomLayers.forEach((layer, i) => {
+        gsap.set(layer, { 
+            z: -1500 * (i + 1), // Jarak antar layer adalah 1500px ke dalam
+            opacity: 0,
+            scale: 0.8
+        });
+    });
+
+    // 3. Buat timeline ScrollTrigger untuk section 3D
+    const roomTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#room-3d",
+            start: "top top", // Mulai saat ujung atas section menyentuh ujung atas viewport
+            end: "+=4000",    // Semakin besar angkanya, semakin panjang durasi scroll-nya (4000px)
+            scrub: 1,         // Efek smooth catching up dengan scroll
+            pin: true,        // Kunci layar agar tidak turun ke bawah sampai animasi 3D selesai
+        }
+    });
+
+    // 4. Animasikan setiap layer untuk maju ke arah pengguna (Z mendekati positif)
+    roomLayers.forEach((layer, i) => {
+        // Animasi pergerakan Z dan opacity
+        roomTl.to(layer, {
+            z: 1000,          // Maju sampai melewati layar (ke arah wajah user)
+            scale: 1.5,       // Sedikit membesar saat mendekat
+            opacity: 1,       // Muncul dari kegelapan
+            ease: "none",
+            duration: 2       // Durasi relative di dalam timeline
+        }, i * 0.8);          // Waktu tunggu (delay) antar layer agar berurutan
+
+        // Supaya setelah melewati layar layer tersebut menghilang perlahan
+        roomTl.to(layer, {
+            opacity: 0,
+            ease: "power2.in",
+            duration: 0.5
+        }, (i * 0.8) + 1.5); // Di-trigger saat layer sudah sangat dekat
     });
 }
