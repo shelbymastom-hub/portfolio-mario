@@ -70,7 +70,6 @@ const swiper = new Swiper('.myGallerySwiper', {
     slidesPerView: 'auto', 
     loop: true,
     speed: 600, 
-    // Mencegah error saat klik gambar di dalam swiper slider
     preventClicks: true,
     preventClicksPropagation: true,
     breakpoints: {
@@ -99,7 +98,6 @@ window.addEventListener('scroll', () => {
 
 document.querySelectorAll('.navbar a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        // Abaikan fungsi preventDefault jika link menuju halaman lain (.html)
         if (this.getAttribute('href').includes('.html')) return;
 
         e.preventDefault(); 
@@ -117,7 +115,7 @@ document.querySelectorAll('.navbar a').forEach(anchor => {
 });
 
 // ========================================================
-// 5. TEMPLATE SECTION: HURUF JATUH & DRAGGABLE INTERACTIVE
+// 5. TEMPLATE SECTION
 // ========================================================
 const textKata = "EXPLORE";
 const dragWrapper = document.getElementById('drag-button-wrapper');
@@ -167,9 +165,8 @@ if (dragWrapper) {
 }
 
 // ========================================================
-// CODE PART 3: 3D ROOM PROJECTION JS
+// 6. 3D ROOM PROJECTION JS
 // ========================================================
-
 const roomLayers = gsap.utils.toArray('.room-layer');
 
 if (roomLayers.length > 0) {
