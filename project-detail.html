@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Reluxe Style</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="detail-style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <div class="sidebar-left floating-icons">
+        <i class="fa-solid fa-play"></i>
+        <i class="fa-solid fa-microphone"></i>
+        <i class="fa-solid fa-volume-high"></i>
+    </div>
+    
+    <div class="sidebar-right floating-icons">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-x-twitter"></i>
+        <i class="fa-brands fa-spotify"></i>
+    </div>
+
+    <nav class="detail-nav">
+        <div class="logo">
+            <a href="index.html" style="color:white; text-decoration:none;">
+                <span style="color: #ff9d00;">▉</span> Reluxe
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#" class="active">About</a></li>
+            <li><a href="#">Tracks</a></li>
+            <li><a href="#">How it works</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button class="btn-outline">Log In</button>
+            <button class="btn-primary">Sign Up</button>
+        </div>
+    </nav>
+
+    <main class="hero-circles-section">
+        <div class="bg-letters">
+            <span>R</span>
+            <span>e</span>
+        </div>
+
+        <div class="circles-wrapper">
+            <div class="circle circle-1">
+                <i class="fa-solid fa-arrow-right icon-arrow"></i>
+                <p>The platform helps aspiring artists bring their music to the audience</p>
+            </div>
+            
+            <div class="circle circle-2" style="background-image: url('https://images.unsplash.com/photo-1516280440502-65f532890656?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                <h1 class="giant-text">Reluxe</h1>
+            </div>
+            
+            <div class="circle circle-3" style="background-image: url('https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                <button class="btn-learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <section class="bottom-cards-section">
+        <div class="card card-1">
+            <div class="card-text">
+                <h3>Opportunity to create your own unique profile</h3>
+                <button class="btn-explore">Explore</button>
+            </div>
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1508214751196-bfd1414e4cb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');">
+                <div class="img-overlay-circle"></div>
+                <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
+            </div>
+        </div>
+
+        <div class="card card-2">
+            <div class="card-text">
+                <h3>Support and feedback from the music community</h3>
+            </div>
+            <div class="glass-menu">
+                <span><i class="fa-solid fa-bars"></i> Menu</span>
+                <span>Records</span>
+                <span>Progress</span>
+                <span class="highlight">Create +</span>
+            </div>
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1493225457124-a1a2a5f5294b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
+            <i class="fa-solid fa-arrow-up-right-from-square card-icon absolute-icon"></i>
+        </div>
+
+        <div class="card card-3">
+            <div class="card-text">
+                <h3>Guaranteed payouts for every track played</h3>
+                <button class="btn-explore">Explore</button>
+            </div>
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');">
+                <div class="img-overlay-circle"></div>
+                <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <script src="detail-script.js"></script>
+</body>
+</html>
